@@ -13,17 +13,17 @@ local function get_git_dir(path)
 
 	-- Checks if provided directory contains git directory
 	local function has_git_dir(dir)
-			return clink.is_dir(dir..'/.git') and dir..'/.git'
+			return clink.is_dir(dir .. "/.git") and dir .. "/.git"
 	end
 
 	local function has_git_file(dir)
-			local gitfile = io.open(dir..'/.git')
+			local gitfile = io.open(dir .. "/.git")
 			if not gitfile then return false end
 
-			local git_dir = gitfile:read():match('gitdir: (.*)')
+			local git_dir = gitfile:read():match("gitdir: (.*)")
 			gitfile:close()
 
-			return git_dir and dir..'/'..git_dir
+			return git_dir and dir .. "/" .. git_dir
 	end
 
 	-- Calculate parent path now otherwise we won't be
@@ -42,7 +42,7 @@ local function get_git_branch(git_dir)
 
 	-- If git directory not found then we're probably outside of repo
 	-- or something went wrong. The same is when head_file is nil
-	local head_file = git_dir and io.open(git_dir..'/HEAD')
+	local head_file = git_dir and io.open(git_dir .. "/HEAD")
 	if not head_file then return "" end
 
 	local HEAD = head_file:read()
@@ -50,7 +50,7 @@ local function get_git_branch(git_dir)
 
 	-- if HEAD matches branch expression, then we're on named branch
 	-- otherwise it is a detached commit
-	return HEAD:match('ref: refs/heads/(.+)') or HEAD:sub(1, 7)
+	return HEAD:match("ref: refs/heads/(.+)") or HEAD:sub(1, 7)
 end
 
 
@@ -74,7 +74,7 @@ local function add_git_segment()
 			prompt = git_prefix .. format_fg_color(branch, colors.red) .. git_sufix .. " "
 		end
 		
-		if get_git_status() == false then
+		if config.use_git_dirty_flag and get_git_status() == false then
 			prompt = prompt .. format_fg_color(symbols.git_dirty, colors.yellow) .. " "
 		end
 		
