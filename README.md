@@ -39,7 +39,7 @@ new-item -path 'cmzsh_4_git(op).lua' -itemtype symboliclink -value '<dirname>\cm
 ## To-do List
 
 - [x] Add Git segment module
-- [ ] Add NPM segment module
+- [x] Add NPM segment module
 - [ ] Add Virtualenv segment module
 - [ ] Create installation/updating scripts
 - [ ] Add preview images to this README
