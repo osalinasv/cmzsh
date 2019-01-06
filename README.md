@@ -6,13 +6,13 @@ A Cmder/ConEmu addon that replicates OhMyZsh's robbyrussell theme
 
 Clone the repo:
 
-```sh
+```
 git clone https://github.com/osalinasv/cmzsh.git <dirname>
 ```
 
 Create a symlink between the .lua files in `<dirname>` and your Cmder/ConEmu `config` directory:
 
-```sh
+```
 cd %CMDER_ROOT%/config
 
 mklink /H cmzsh_0_config.lua <dirname>/cmzsh_0_config.lua
@@ -26,13 +26,13 @@ The numbers in the filenames represent the load order of the addons.
 Follow the same steps to intall any of the Optional segments for the prompt (i.e: git).
 Optional segments are annotated with an `(op)` in the filename:
 
-```sh
+```
 mklink /H cmzsh_4_git(op).lua <dirname>/cmzsh_4_git(op).lua
 ```
 
 To create symlinks between different drives use PowerShell (remember to open as Admin if your Cmder/ConEmu directory is under `C:\`):
 
-```ps
+```
 new-item -path 'cmzsh_4_git(op).lua' -itemtype symboliclink -value '<dirname>\cmzsh_4_git(op).lua'
 ```
 
