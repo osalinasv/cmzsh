@@ -1,3 +1,5 @@
+
+
 colors = {
 	esc = "\x1b",
 	black = {
@@ -41,5 +43,5 @@ end
 
 
 function format_with_color(text, fc, bc)
-	return colors.esc .. "[" .. fc .. ";" .. bc .. "m" .. text .. colors.esc .. "[" .. "0m";
+	return colors.esc .. "[" .. fc .. ";" .. bc .. "m" .. text .. colors.esc .. "[" .. "0m"
 end

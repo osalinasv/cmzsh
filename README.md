@@ -6,34 +6,51 @@ A Cmder/ConEmu addon that replicates OhMyZsh's robbyrussell theme
 
 Clone the repo:
 
-```
-git clone https://github.com/osalinasv/cmzsh.git <dirname>
-```
-
-Create a symlink between the .lua files in `<dirname>` and your Cmder/ConEmu `config` directory:
-
-```
-cd %CMDER_ROOT%/config
-
-mklink /H cmzsh_0_config.lua <dirname>/cmzsh_0_config.lua
-mklink /H cmzsh_1_colors.lua <dirname>/cmzsh_1_colors.lua
-mklink /H cmzsh_2_core.lua   <dirname>/cmzsh_2_core.lua
-mklink /H cmzsh_3_prompt.lua <dirname>/cmzsh_3_prompt.lua
+```cmd
+git clone https://github.com/osalinasv/cmzsh.git
 ```
 
-The numbers in the filenames represent the load order of the addons.
+Run the `install.ps1` script over your Cmder/ConEmu `config` directory:
 
-Follow the same steps to intall any of the Optional segments for the prompt (i.e: git).
-Optional segments are annotated with an `(op)` in the filename:
-
-```
-mklink /H cmzsh_4_git(op).lua <dirname>/cmzsh_4_git(op).lua
+```cmd
+cd cmzsh
+powershell .\install.ps1 C:\cmder\config
 ```
 
-To create symlinks between different drives use PowerShell (remember to open as Admin if your Cmder/ConEmu directory is under `C:\`):
+This will create symlinks between all `*.lua` files in the downloaded repo and the target `config` directory. i.e:
 
 ```
-new-item -path 'cmzsh_4_git(op).lua' -itemtype symboliclink -value '<dirname>\cmzsh_4_git(op).lua'
+Directory: C:\dev\cmder\config
+
+Mode            LastWriteTime    Length Name
+----            -------------    ------ ----
+-a---l   06/01/2019   6:08 PM         0 cmzsh_0_config.lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_1_colors.lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_2_core.lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_3_prompt.lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_4_git(op).lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_5_npm(op).lua
+```
+
+### Manual installation
+
+You can always just copy and paste the files in the `config` directory. Or if you prefer, you can create the symlinks yourself, i.e:
+
+```cmd
+cd C:\cmder\config
+
+mklink /H cmzsh_0_config.lua <path_to_repo>/cmzsh_0_config.lua
+mklink /H cmzsh_1_colors.lua <path_to_repo>/cmzsh_1_colors.lua
+mklink /H cmzsh_2_core.lua   <path_to_repo>/cmzsh_2_core.lua
+mklink /H cmzsh_3_prompt.lua <path_to_repo>/cmzsh_3_prompt.lua
+```
+
+To create symlinks between different drives use PowerShell:
+
+```ps
+cd C:\cmder\config
+
+New-Item -Path 'cmzsh_4_git(op).lua' -ItemType SymbolicLink -Value '<path_to_repo>\cmzsh_4_git(op).lua'
 ```
 
 ## To-do List
@@ -41,7 +58,7 @@ new-item -path 'cmzsh_4_git(op).lua' -itemtype symboliclink -value '<dirname>\cm
 - [x] Add Git segment module
 - [x] Add NPM segment module
 - [ ] Add Virtualenv segment module
-- [ ] Create installation/updating scripts
+- [x] Create installation scripts
 - [ ] Add preview images to this README
 
 ## Author

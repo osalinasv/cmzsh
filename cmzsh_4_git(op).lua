@@ -65,20 +65,17 @@ local function add_git_segment()
 	
 	if git_dir then
 		local branch = get_git_branch(git_dir)
-		local prompt = ""
 
 		if branch then
 			local git_prefix = format_fg_color("git:(", colors.blue)
 			local git_sufix = format_fg_color(")", colors.blue)
 		
-			prompt = git_prefix .. format_fg_color(branch, colors.red) .. git_sufix .. " "
+			add_to_prompt(git_prefix .. format_fg_color(branch, colors.red) .. git_sufix)
 		end
 		
 		if config.use_git_dirty_flag and get_git_status() == false then
-			prompt = prompt .. format_fg_color(symbols.git_dirty, colors.yellow) .. " "
+			add_to_prompt(format_fg_color(symbols.git_dirty, colors.yellow))
 		end
-		
-		add_to_prompt(prompt)
 	end
 end
 

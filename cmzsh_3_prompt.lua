@@ -25,10 +25,8 @@ local function add_prompt_segment()
 	local cwd = clink.get_cwd()
 	local arrow_color = last_command_failed() and colors.red or colors.green
 	
-	local prompt = format_fg_color(symbols.arrow, arrow_color) .. "  "
-	prompt = prompt .. format_fg_color(get_prompt_dir(cwd), colors.cyan) .. " "
-
-	add_to_prompt(prompt)
+	add_to_prompt(format_fg_color(symbols.arrow, arrow_color))
+	add_to_prompt(format_fg_color(get_prompt_dir(cwd), colors.cyan))
 end
 
 
