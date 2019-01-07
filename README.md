@@ -20,7 +20,7 @@ powershell .\install.ps1 C:\cmder\config
 This will create symlinks between all `*.lua` files in the downloaded repo and the target `config` directory. i.e:
 
 ```
-Directory: C:\dev\cmder\config
+Directory: C:\cmder\config
 
 Mode            LastWriteTime    Length Name
 ----            -------------    ------ ----
@@ -28,8 +28,8 @@ Mode            LastWriteTime    Length Name
 -a---l   06/01/2019   6:08 PM         0 cmzsh_1_colors.lua
 -a---l   06/01/2019   6:08 PM         0 cmzsh_2_core.lua
 -a---l   06/01/2019   6:08 PM         0 cmzsh_3_prompt.lua
--a---l   06/01/2019   6:08 PM         0 cmzsh_4_git(op).lua
--a---l   06/01/2019   6:08 PM         0 cmzsh_5_npm(op).lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_4_opt_git.lua
+-a---l   06/01/2019   6:08 PM         0 cmzsh_5_opt_npm.lua
 ```
 
 ### Manual installation
@@ -50,7 +50,7 @@ To create symlinks between different drives use PowerShell:
 ```ps
 cd C:\cmder\config
 
-New-Item -Path 'cmzsh_4_git(op).lua' -ItemType SymbolicLink -Value '<path_to_repo>\cmzsh_4_git(op).lua'
+New-Item -Path 'cmzsh_4_opt_git.lua' -ItemType SymbolicLink -Value '<path_to_repo>\cmzsh_4_opt_git.lua'
 ```
 
 ## To-do List
